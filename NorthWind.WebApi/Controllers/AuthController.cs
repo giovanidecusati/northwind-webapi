@@ -44,14 +44,14 @@ namespace NorthWind.WebApi.Controllers
         [HttpPost]
         [Route("login")]
         [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody]LoginCommand command)
+        public async Task<IActionResult> Login([FromForm]LoginCommand command)
         {
             if (command == null)
                 return await CreateResponse(null, new[] { new Notification("User", "Invalid user name or password.") });
 
-            var user = _userRepository.GetByEmail(command.Email);
+            var user = _userRepository.GetByEmail(command.Username);
 
-            if (user == null || !user.Authenticate(command.Email, command.Password))
+            if (user == null || !user.Authenticate(command.Username, command.Password))
                 return await CreateResponse(null, new[] { new Notification("User", "Invalid user name or password.") });
 
             var identity = await GetClaims(user);
