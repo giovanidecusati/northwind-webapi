@@ -15,6 +15,7 @@ using NorthWind.Infrastructure.UnitOfWork;
 using NorthWind.Shared;
 using NorthWind.WebApi.Middlewares;
 using NorthWind.WebApi.Security;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Text;
 
@@ -34,6 +35,7 @@ namespace NorthWind.WebApi
             var configurationBuilder = new ConfigurationBuilder()
                .SetBasePath(env.ContentRootPath)
                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+               .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                .AddEnvironmentVariables();
 
             Configuration = configurationBuilder.Build();
@@ -136,10 +138,20 @@ namespace NorthWind.WebApi
 
             app.UseMvc();
 
-            // Seed
+            InitializeDatabase(app);
+        }
+
+        void InitializeDatabase(IApplicationBuilder app)
+        {
+            // DataBase Creation and Seed
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            using (var northWindDataContext = serviceScope.ServiceProvider.GetService<NorthWindDataContext>())
-                northWindDataContext.SeedData();
+            {
+                using (var northWindDataContext = serviceScope.ServiceProvider.GetService<NorthWindDataContext>())
+                {
+                    northWindDataContext.Database.Migrate();
+                    northWindDataContext.SeedData();
+                }
+            }
         }
     }
 }
