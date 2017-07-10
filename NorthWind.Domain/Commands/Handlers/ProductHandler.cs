@@ -20,29 +20,25 @@ namespace NorthWind.Domain.Commands.Handlers
         public ICommandResult Handle(CreateProductCommand command)
         {
             var product = new Product(command.Name, command.Price, command.Stock);
-            if (!product.IsValid())
+            AddNotifications(product.Notifications);
+
+            if (product.IsValid())
             {
-                AddNotifications(product.Notifications);
-                return null;
+                _productRepository.Create(product);
+                return new CreatedCommandResult(product);
             }
 
-            _productRepository.Create(product);
-
-            return new CreatedCommandResult(product);
+            return null;
         }
 
         public ICommandResult Handle(UpdateProductCommand command)
         {
             var product = _productRepository.GetById(command.Id);
-
             product.Change(command.Name, command.Price);
-            if (!product.IsValid())
-            {
-                AddNotifications(product.Notifications);
-                return null;
-            }
+            AddNotifications(product.Notifications);
 
-            _productRepository.Update(product);
+            if (product.IsValid())            
+                _productRepository.Update(product);
 
             return null;
         }

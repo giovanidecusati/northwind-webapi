@@ -20,29 +20,25 @@ namespace NorthWind.Domain.Commands.Handlers
         public ICommandResult Handle(CreateCustomerCommand command)
         {
             var customer = new Customer(command.Name);
-            if (!customer.IsValid())
+            AddNotifications(customer.Notifications);
+
+            if (customer.IsValid())
             {
-                AddNotifications(customer.Notifications);
-                return null;
+                _customerRepository.Create(customer);
+                return new CreatedCommandResult(customer);
             }
 
-            _customerRepository.Create(customer);
-
-            return new CreatedCommandResult(customer);
+            return null;
         }
 
         public ICommandResult Handle(UpdateCustomerCommand command)
         {
-            var customer = _customerRepository.GetById(command.Id);
-
+            var customer = _customerRepository.GetById(command.Id);            
             customer.Change(command.Name);
-            if (!customer.IsValid())
-            {
-                AddNotifications(customer.Notifications);
-                return null;
-            }
+            AddNotifications(customer.Notifications);
 
-            _customerRepository.Update(customer);
+            if (customer.IsValid())
+                _customerRepository.Update(customer);
 
             return null;
         }

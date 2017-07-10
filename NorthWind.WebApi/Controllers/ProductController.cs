@@ -18,7 +18,11 @@ namespace NorthWind.WebApi.Controllers
         readonly IProductRepository _productRepository;
         readonly IMemoryCache _memoryCache;
 
-        public ProductController(IUow uow, ProductHandler productHandler, IProductRepository productRepository, IMemoryCache memoryCache) : base(uow)
+        public ProductController(
+            IUow uow, 
+            ProductHandler productHandler, 
+            IProductRepository productRepository, 
+            IMemoryCache memoryCache) : base(uow)
         {
             _productHandler = productHandler;
             _productRepository = productRepository;

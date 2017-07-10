@@ -8,7 +8,8 @@ docker create --name nwapi-build giovanidecusati/northwind-webapi:dev
 docker cp nwapi-build:/out ./publish
 
 # Build a runtime (compiled) image
-docker build --tag "giovanidecusati/northwind-webapi:0.0.1" -f .\Docker\Dockerfile.runtime .
+docker build --tag "giovanidecusati/northwind-webapi:0.0.1" -f .\Docker\Dockerfile.tst .
 
 # Run Web Api
-docker run --rm -p 5000:80 giovanidecusati/northwind-webapi:0.0.1
+# docker run --rm -p 5000:80 giovanidecusati/northwind-webapi:0.0.1
+docker-compose up -f .\Docker\Docker-compose.yml .

@@ -35,15 +35,15 @@ namespace NorthWind.Domain.Commands.Handlers
                 order.AddItem(product, item.Quantity);
             }
 
-            if (!order.IsValid())
+            AddNotifications(order.Notifications);
+
+            if (order.IsValid())
             {
-                AddNotifications(order.Notifications);
-                return null;
+                _orderRepository.Create(order);
+                return new CreatedCommandResult(order);
             }
 
-            _orderRepository.Create(order);
-
-            return new CreatedCommandResult(order);
+            return null;
         }
     }
 }

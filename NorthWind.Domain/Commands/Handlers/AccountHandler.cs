@@ -21,15 +21,15 @@ namespace NorthWind.Domain.Commands.Handlers
             if (_userRepository.GetByEmail(command.Email) == null)
             {
                 var user = new User(command.FirstName, command.LastName, command.Email, command.Password, command.ConfirmPassword);
-                if (!user.IsValid())
+                AddNotifications(user.Notifications);
+
+                if (user.IsValid())
                 {
-                    AddNotifications(user.Notifications);
-                    return null;
+                    _userRepository.Create(user);
+                    return new CreatedCommandResult(user);
                 }
 
-                _userRepository.Create(user);
-
-                return new CreatedCommandResult(user);
+                return null;
             }
             else
             {

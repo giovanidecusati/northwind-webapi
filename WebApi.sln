@@ -1,21 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWind.WebApi", "NorthWind.WebApi\NorthWind.WebApi.csproj", "{FEADC09E-FCF4-4573-95C4-6642AB976E6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthWind.WebApi", "NorthWind.WebApi\NorthWind.WebApi.csproj", "{FEADC09E-FCF4-4573-95C4-6642AB976E6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. WebApi", "1. WebApi", "{7F70E3CA-8957-4472-9417-12C3C223E561}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Domain", "2. Domain", "{A95BDFC1-F986-4EE6-BE88-9AAD5D1C9696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWind.Shared", "NorthWind.Shared\NorthWind.Shared.csproj", "{A065A7C1-05FB-41CD-9350-D453E870CE97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthWind.Shared", "NorthWind.Shared\NorthWind.Shared.csproj", "{A065A7C1-05FB-41CD-9350-D453E870CE97}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infrastructure", "3. Infrastructure", "{D1E1326C-373D-4555-82DB-EE3460529189}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWind.Infrastructure", "NorthWind.Infrastructure\NorthWind.Infrastructure.csproj", "{04E65580-0D46-4148-BE19-AFD8944866BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthWind.Infrastructure", "NorthWind.Infrastructure\NorthWind.Infrastructure.csproj", "{04E65580-0D46-4148-BE19-AFD8944866BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWind.Domain", "NorthWind.Domain\NorthWind.Domain.csproj", "{2885BBF0-03B5-4186-8175-2ECE217AD0D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthWind.Domain", "NorthWind.Domain\NorthWind.Domain.csproj", "{2885BBF0-03B5-4186-8175-2ECE217AD0D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Test", "4. Test", "{ED944A8C-A221-42D6-B692-AC9D3EA59278}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWind.Domain.UnitTest", "NorthWind.Domain.UnitTest\NorthWind.Domain.UnitTest.csproj", "{C154E071-6369-413B-9426-DE3535B4D949}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,10 @@ Global
 		{2885BBF0-03B5-4186-8175-2ECE217AD0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2885BBF0-03B5-4186-8175-2ECE217AD0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2885BBF0-03B5-4186-8175-2ECE217AD0D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C154E071-6369-413B-9426-DE3535B4D949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C154E071-6369-413B-9426-DE3535B4D949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C154E071-6369-413B-9426-DE3535B4D949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C154E071-6369-413B-9426-DE3535B4D949}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +56,6 @@ Global
 		{A065A7C1-05FB-41CD-9350-D453E870CE97} = {A95BDFC1-F986-4EE6-BE88-9AAD5D1C9696}
 		{04E65580-0D46-4148-BE19-AFD8944866BE} = {D1E1326C-373D-4555-82DB-EE3460529189}
 		{2885BBF0-03B5-4186-8175-2ECE217AD0D4} = {A95BDFC1-F986-4EE6-BE88-9AAD5D1C9696}
+		{C154E071-6369-413B-9426-DE3535B4D949} = {ED944A8C-A221-42D6-B692-AC9D3EA59278}
 	EndGlobalSection
 EndGlobal
